@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 223790254219340566}
   - component: {fileID: 114529416656054608}
   - component: {fileID: 114852142241374200}
-  - component: {fileID: 114570659048839706}
+  - component: {fileID: 114169701688905828}
   m_Layer: 5
   m_Name: SCREEN_INITIAL_CONNECTION
   m_TagString: Untagged
@@ -99,6 +99,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114169701688905828
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1753787086103338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5cd12fc56c193449170aa22e4a4a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectorGraphic: {fileID: 0}
 --- !u!114 &114183200840466800
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,18 +219,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114570659048839706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1753787086103338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc7b3f33de044fe4fa1e8f9079860509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectorGraphic: {fileID: 0}
 --- !u!114 &114642425440929892
 MonoBehaviour:
   m_ObjectHideFlags: 1

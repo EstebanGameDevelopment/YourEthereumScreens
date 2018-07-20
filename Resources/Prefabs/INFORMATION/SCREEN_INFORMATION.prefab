@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 22380472}
   - component: {fileID: 11478872}
   - component: {fileID: 11493216}
-  - component: {fileID: 114089190418956632}
+  - component: {fileID: 114790044540887884}
   m_Layer: 5
   m_Name: SCREEN_INFORMATION
   m_TagString: Untagged
@@ -538,18 +538,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114089190418956632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 174312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc7b3f33de044fe4fa1e8f9079860509, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectorGraphic: {fileID: 0}
 --- !u!114 &114191545542185678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -706,6 +694,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114790044540887884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd5cd12fc56c193449170aa22e4a4a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectorGraphic: {fileID: 0}
 --- !u!114 &114861543073228602
 MonoBehaviour:
   m_ObjectHideFlags: 1
