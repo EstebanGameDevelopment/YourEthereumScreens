@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 223387281051691648}
   - component: {fileID: 114519042550097206}
   - component: {fileID: 114009645548571812}
-  - component: {fileID: 114053593619699040}
+  - component: {fileID: 114840563242335838}
   m_Layer: 5
   m_Name: SCREEN_CONFIRMATION
   m_TagString: Untagged
@@ -212,18 +212,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114053593619699040
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1768498709844968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd5cd12fc56c193449170aa22e4a4a14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectorGraphic: {fileID: 0}
 --- !u!114 &114124827753013950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,6 +518,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114840563242335838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1768498709844968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7b3f33de044fe4fa1e8f9079860509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectorGraphic: {fileID: 0}
 --- !u!222 &222001728734086668
 CanvasRenderer:
   m_ObjectHideFlags: 1

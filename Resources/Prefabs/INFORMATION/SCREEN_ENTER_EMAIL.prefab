@@ -110,7 +110,6 @@ GameObject:
   - component: {fileID: 223941784310582946}
   - component: {fileID: 114874601837699332}
   - component: {fileID: 114220840669202456}
-  - component: {fileID: 114926079386114518}
   m_Layer: 5
   m_Name: SCREEN_ENTER_EMAIL
   m_TagString: Untagged
@@ -676,18 +675,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114926079386114518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1495326873727782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56678600727f90d4483ad44fd01a76bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SelectorGraphic: {fileID: 0}
 --- !u!222 &222121676488052250
 CanvasRenderer:
   m_ObjectHideFlags: 1
