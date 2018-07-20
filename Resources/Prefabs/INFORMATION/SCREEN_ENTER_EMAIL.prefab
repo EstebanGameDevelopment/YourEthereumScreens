@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 223941784310582946}
   - component: {fileID: 114874601837699332}
   - component: {fileID: 114220840669202456}
+  - component: {fileID: 114135625540944114}
   m_Layer: 5
   m_Name: SCREEN_ENTER_EMAIL
   m_TagString: Untagged
@@ -236,6 +237,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &114135625540944114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1495326873727782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f996aaf752f3236439dbf9c19ac4f53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectorGraphic: {fileID: 0}
 --- !u!114 &114158341996506250
 MonoBehaviour:
   m_ObjectHideFlags: 1

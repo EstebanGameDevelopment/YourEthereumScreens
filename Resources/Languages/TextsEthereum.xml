@@ -789,6 +789,11 @@
     <es>El id del contrato para los documentos firmados</es>
   </text>
 
+  <text id="screen.ethereum.mining.transaction">
+    <en>Mining transaction % ...</en>
+    <es>Mining transaction % ...</es>
+  </text>
+
 </texts>
 
 

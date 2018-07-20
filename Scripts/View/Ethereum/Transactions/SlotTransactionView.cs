@@ -64,8 +64,9 @@ namespace YourEthereumManager
 				}
 
 				addresses += sitem.Items[1];
-			}
-			m_container.Find("Target").GetComponent<Text>().text = EthereumController.Instance.AddressToLabel(addresses.Split(':'));
+                Debug.LogError("addresses=" + addresses);
+            }
+			m_container.Find("Target").GetComponent<Text>().text = EthereumController.Instance.AddressToLabelUpperCase(addresses.Split(':'));
 
 			m_container.Find("Title").GetComponent<Text>().text = m_title;
 			string dateTrimmed = m_date.ToString();
