@@ -44,10 +44,10 @@ namespace YourEthereumManager
 			m_container.Find("Button_Back").GetComponent<Button>().onClick.AddListener(OnBackButton);
 
 			m_container.Find("Enter").GetComponent<Button>().onClick.AddListener(OnEnterBitcoins);
-			m_container.Find("Enter/Text").GetComponent<Text>().text = LanguageController.Instance.GetText("screen.ethereum.enter.bitcoins");
+			m_container.Find("Enter/Text").GetComponent<Text>().text = LanguageController.Instance.GetText("screen.ethereum.enter.ethereum");
 
 			m_container.Find("Withdraw").GetComponent<Button>().onClick.AddListener(OnWithdrawBitcoins);
-			m_container.Find("Withdraw/Text").GetComponent<Text>().text = LanguageController.Instance.GetText("screen.ethereum.withdraw.bitcoins");
+			m_container.Find("Withdraw/Text").GetComponent<Text>().text = LanguageController.Instance.GetText("screen.ethereum.withdraw.ethereum");
 
 			m_container.Find("PublicKeyLabel").GetComponent<Text>().text = LanguageController.Instance.GetText("screen.ethereum.copy.paste.public.address");
 			m_container.Find("PublicKeyInput").GetComponent<InputField>().text = EthereumController.Instance.CurrentPublicKey;

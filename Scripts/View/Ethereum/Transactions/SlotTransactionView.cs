@@ -64,7 +64,6 @@ namespace YourEthereumManager
 				}
 
 				addresses += sitem.Items[1];
-                Debug.LogError("addresses=" + addresses);
             }
 			m_container.Find("Target").GetComponent<Text>().text = EthereumController.Instance.AddressToLabelUpperCase(addresses.Split(':'));
 

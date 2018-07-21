@@ -89,28 +89,28 @@
   </text>
 
   <text id="screen.ethereum.features.page.1">
-    <en>Practise with this wallet as much time as you want with FREE Test Bitcoins in the Test Network for FREE</en>
-    <es>Practica con esta cartera tanto tiempo como desee con Bitcoins de test Gratuitos en la red de testeo gratuita</es>
+    <en>Practise with this wallet as much time as you want with FREE Test Ethereum in the Test Network for FREE</en>
+    <es>Practica con esta cartera tanto tiempo como desee con Ethereum de test Gratuitos en la red de testeo gratuita</es>
   </text>
 
   <text id="screen.ethereum.features.page.2">
-    <en>The Test Network is a network the developers are using to develop Bitcoins based applications without spending any real cash</en>
-    <es>La red de testeo es una red que utilizan los desarrolladores de applicaciones Bitcoin sin necesidad de gastar dinero</es>
+    <en>The Test Network is a network the developers are using to develop Ethereum based applications without spending any real cash</en>
+    <es>La red de testeo es una red que utilizan los desarrolladores de applicaciones Ethereum sin necesidad de gastar dinero</es>
   </text>
 
   <text id="screen.ethereum.features.page.3">
-    <en>Once you get used the way Bitcoin works you can switch to the Main Bitcoin Network to work with real cash</en>
-    <es>Una vez este acostumbrado a la forma de trabajar de Bitcoin usted puede cambiar a la red principal de Bitcoin con dinero real</es>
+    <en>Once you get used the way Ethereum works you can switch to the Main Ethereum Network to work with real cash</en>
+    <es>Una vez este acostumbrado a la forma de trabajar de Ethereum usted puede cambiar a la red principal de Ethereum con dinero real</es>
   </text>
 
   <text id="screen.ethereum.features.page.4">
-    <en>It also allows ways to move your Bitcoins from cryptocurrency to other currencies like PayPal easily</en>
-    <es>It also allows ways to move your Bitcoins from cryptocurrency to other currencies like PayPal easily</es>
+    <en>It also allows ways to move your Ethereum from cryptocurrency to other currencies like PayPal easily</en>
+    <es>It also allows ways to move your Ethereum from cryptocurrency to other currencies like PayPal easily</es>
   </text>
 
   <text id="screen.ethereum.features.page.5">
-    <en>You will find the asset in Unity Asset Store in which this application is based so you can develop easily and add Bitcoins to your business</en>
-    <es>Encontrará el asset en la Unity Asset Store en el cual esta basado esta aplicación para que usted pueda integrar Bitcoins en su negocio</es>
+    <en>You will find the asset in Unity Asset Store in which this application is based so you can develop easily and add Ethereum to your business</en>
+    <es>Encontrará el asset en la Unity Asset Store en el cual esta basado esta aplicación para que usted pueda integrar Ethereum en su negocio</es>
   </text>
 
   <text id="screen.ethereum.transactions.inputs">
@@ -462,14 +462,14 @@
     <es>Enviar Código QR</es>
   </text>
 
-  <text id="screen.ethereum.enter.bitcoins">
-    <en>Add Bitcoins</en>
-    <es>Ingresar Bitcoins</es>
+  <text id="screen.ethereum.enter.ethereum">
+    <en>Add Ethereum</en>
+    <es>Ingresar Ethereum</es>
   </text>
 
-  <text id="screen.ethereum.withdraw.bitcoins">
-    <en>Withdraw Bitcoins</en>
-    <es>Retirar Bitcoins</es>
+  <text id="screen.ethereum.withdraw.ethereum">
+    <en>Withdraw Ethereum</en>
+    <es>Retirar Ethereum</es>
   </text>
 
   <text id="screen.enter.email.address">
@@ -508,18 +508,18 @@
   </text>
 
   <text id="screen.ethereum.choose.your.own.method.bitcoins.to.paypal">
-    <en>On the opened URL you can convert from Bitcoin to Paypal.++In the future, it should be possible to do it from inside this same application, just by setting up your PayPal email address.</en>
-    <es>On the opened URL you can convert from Bitcoin to Paypal.++In the future, it should be possible to do it from inside this same application, just by setting up your PayPal email address.</es>
+    <en>On the opened URL you can convert from Ethereum to Paypal.++In the future, it should be possible to do it from inside this same application, just by setting up your PayPal email address.</en>
+    <es>On the opened URL you can convert from Ethereum to Paypal.++In the future, it should be possible to do it from inside this same application, just by setting up your PayPal email address.</es>
   </text>
 
   <text id="screen.ethereum.choose.your.own.method.bitcoins.to.paypal.2">
-    <en>Since you have the code you can do it by yourself.++You can be the first to make the most accessible way to earn Bitcoins with digital work and exchange it to PayPal easily</en>
-    <es>Since you have the code you can do it by yourself.++You can be the first to make the most accessible way to earn Bitcoins with digital work and exchange it to PayPal easily</es>
+    <en>Since you have the code you can do it by yourself.++You can be the first to make the most accessible way to earn Ethereum with digital work and exchange it to PayPal easily</en>
+    <es>Since you have the code you can do it by yourself.++You can be the first to make the most accessible way to earn Ethereum with digital work and exchange it to PayPal easily</es>
   </text>
 
   <text id="screen.ethereum.choose.your.own.method.bitcoins.to.paypal.3">
-    <en>Since you are right now on the Test Network you can't exchange Bitcoin of this Test Network for real money because these Bitcoins are just for testing.</en>
-    <es>Since you are right now on the Test Network you can't exchange Bitcoin of this Test Network for real money because these Bitcoins are just for testing.</es>
+    <en>Since you are right now on the Test Network you can't exchange Ethereum of this Test Network for real money because these Ethereum are just for testing.</en>
+    <es>Since you are right now on the Test Network you can't exchange Ethereum of this Test Network for real money because these Ethereum are just for testing.</es>
   </text>
 
   <text id="screen.ethereum.send.from.list.of.addresses">
