@@ -92,15 +92,17 @@ namespace YourEthereumManager
 #if UNITY_STANDALONE_WIN && !UNITY_EDITOR
         Screen.SetResolution(550, 900, false);
 #endif
-					
-			UIEventController.Instance.UIEvent += new UIEventHandler(OnUIEvent);
+
+#if ENABLE_ETHEREUM            
+            UIEventController.Instance.UIEvent += new UIEventHandler(OnUIEvent);
             EthereumEventController.Instance.EthereumEvent += new EthereumEventHandler(OnEthereumEvent);
             LanguageController.Instance.Initialize();
 
             if (ScreenToLoad.Length > 0)
 			{
 				InitializeEthereum(ScreenToLoad);
-			}			
+			}		
+#endif            
 		}
 
 		// -------------------------------------------
@@ -140,13 +142,15 @@ namespace YourEthereumManager
 		{
 			base.Destroy();
 
+#if ENABLE_ETHEREUM
 			UIEventController.Instance.UIEvent -= OnUIEvent;
 			EthereumEventController.Instance.EthereumEvent -= OnEthereumEvent;
 
 			LanguageController.Instance.Destroy();
 			CommController.Instance.Destroy();
 			EthereumController.Instance.Destroy();
-			Destroy(_instance);
+#endif
+            Destroy(_instance);
 			_instance = null;
 		}
 

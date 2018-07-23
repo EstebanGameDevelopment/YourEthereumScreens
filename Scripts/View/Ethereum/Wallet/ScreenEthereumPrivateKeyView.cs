@@ -1,4 +1,6 @@
-﻿using Nethereum.Signer;
+﻿#if ENABLE_ETHEREUM
+using Nethereum.Signer;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 using YourCommonTools;
@@ -466,6 +468,7 @@ namespace YourEthereumManager
 		{
             UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_POPUP);
 
+#if ENABLE_ETHEREUM
             var ecKey = EthECKey.GenerateKey();
             var privateKey = ecKey.GetPrivateKey();
             // Debug.LogError("PRIVATE KEY: " + privateKey);
@@ -476,6 +479,7 @@ namespace YourEthereumManager
 			HasChanged = true;
 
 			m_createNewWallet.SetActive(false);
+#endif
 		}
 
 		// -------------------------------------------

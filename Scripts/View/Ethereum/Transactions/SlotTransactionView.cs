@@ -71,7 +71,9 @@ namespace YourEthereumManager
 			string dateTrimmed = m_date.ToString();
 			m_container.Find("Date").GetComponent<Text>().text = dateTrimmed;
 
+#if ENABLE_ETHEREUM
 			m_container.Find("Bitcoins").GetComponent<Text>().text = Utilities.Trim(EthereumController.FromWei(new BigInteger(m_amount)).ToString());
+#endif
 
 			if (m_amount < 0)
 			{
@@ -120,6 +122,7 @@ namespace YourEthereumManager
 		 */
 		public void UpdateCurrency()
 		{
+#if ENABLE_ETHEREUM
 			string balanceCurrencyWallet = (EthereumController.FromWei(new BigInteger(m_amount)) * EthereumController.Instance.CurrenciesExchange[EthereumController.Instance.CurrentCurrency]).ToString();
 			m_container.Find("Price").GetComponent<Text>().text = Utilities.Trim(balanceCurrencyWallet);
 			m_container.Find("Currency").GetComponent<Text>().text = EthereumController.Instance.CurrentCurrency;
@@ -135,6 +138,7 @@ namespace YourEthereumManager
 					item.Value.gameObject.SetActive(false);
 				}
 			}
+#endif
 		}
 
 		// -------------------------------------------

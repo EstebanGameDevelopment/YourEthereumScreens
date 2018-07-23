@@ -146,8 +146,8 @@ namespace YourEthereumManager
 #endif
 			m_publicAddressInput.text = publicKeyAddress;
 
-			// AMOUNT
-			m_container.Find("Amount/Label").GetComponent<Text>().text = LanguageController.Instance.GetText("screen.send.amount.to.send");
+            // AMOUNT
+            m_container.Find("Amount/Label").GetComponent<Text>().text = LanguageController.Instance.GetText("screen.send.amount.to.send");
 			m_amountInput = m_container.Find("Amount/Value").GetComponent<InputField>();
 			m_amountInput.onValueChanged.AddListener(OnValueAmountChanged);
 			m_amountInCurrency = amountTransaction;
@@ -187,7 +187,9 @@ namespace YourEthereumManager
 			m_exchangeToEther = EthereumController.Instance.CurrenciesExchange[m_currencySelected];
 
 			m_container.Find("Network").GetComponent<Text>().text = LanguageController.Instance.GetText("text.network") + "EthereumController.Instance.Network.ToString()";
-		}
+
+            OnValuePublicKeyChanged(publicKeyAddress);
+        }
 
 		// -------------------------------------------
 		/* 
@@ -269,7 +271,7 @@ namespace YourEthereumManager
 			{
 				messageButton += "/\n"; 
 			}
-			messageButton += Utilities.Trim(bitcoins.ToString()) + " BTC / \n";
+			messageButton += Utilities.Trim(bitcoins.ToString()) + " ETH / \n";
 			messageButton += Utilities.Trim((m_exchangeToEther * bitcoins).ToString()) + " " + m_currencySelected;
 			m_container.Find("YourWallet/Text").GetComponent<Text>().text = messageButton;
 		}
