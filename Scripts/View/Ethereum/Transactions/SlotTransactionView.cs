@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using YourCommonTools;
 using YourEthereumController;
+#if ENABLE_ETHEREUM
+using System.Numerics;
+#endif
 
 namespace YourEthereumManager
 {
