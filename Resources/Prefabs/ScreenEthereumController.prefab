@@ -53,6 +53,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DebugMode: 1
   MaterialDrawOnTop: {fileID: 0}
-  ScreensPrefabs: []
+  ScreensPrefabs:
+  - {fileID: 1395187061141274, guid: fd714773fb6c4a84192da340598c35fc, type: 2}
+  - {fileID: 1768498709844968, guid: 665a415f75473144198c56158e3cd4a6, type: 2}
+  - {fileID: 1495326873727782, guid: b2f28a3f70341be45a05fb18380bdee7, type: 2}
+  - {fileID: 1756410128791602, guid: f86af7503793faf4fb99dfe701ca4d0d, type: 2}
+  - {fileID: 174312, guid: 81a22633d72d93a43889d1c0106070d8, type: 2}
+  - {fileID: 1511915010249044, guid: bbcd88dc67046ce419549d0874542f6a, type: 2}
+  - {fileID: 1753787086103338, guid: 741ae61bf9dfa0e41b57433219b80c9f, type: 2}
+  - {fileID: 1475303523904588, guid: 6b104e50d819cde4bb4f7854bc9aaaff, type: 2}
+  - {fileID: 1521586428599510, guid: f9addecfe02b6fa4a80d21a2faa6b6c0, type: 2}
+  - {fileID: 1911899469368256, guid: 54e5cf9d4e409ff4d84412324b38fe09, type: 2}
+  - {fileID: 1605421586434914, guid: 47d793ced1312de4d8bc0592b0c7e740, type: 2}
+  - {fileID: 1820004159115868, guid: bf2c8bfe4f7f1f64d900bddb027be3e3, type: 2}
+  - {fileID: 1397978694008726, guid: 5459637353c4905419be6b378c162d99, type: 2}
+  - {fileID: 1610047932045122, guid: 55ec20c99d3ff254291a748aef1a5ab3, type: 2}
+  - {fileID: 1052337009774528, guid: 4a9036a509bb7434cbdd657f0f0bd5c4, type: 2}
   ReadMeFile: {fileID: 0}
   ScreenToLoad: 
