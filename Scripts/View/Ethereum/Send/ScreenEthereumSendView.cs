@@ -507,7 +507,7 @@ namespace YourEthereumManager
 #endif
 			if (_nameEvent == EVENT_SCREENETHEREUMSEND_USER_CONFIRMED_RUN_TRANSACTION)
 			{
-				ScreenEthereumController.Instance.DestroyScreensAboveLayerPool();
+				ScreenEthereumController.Instance.DestroyScreensFromLayerPool();
 				ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
 				Invoke("OnExecuteRealPayment", 0.1f);
 			}
