@@ -39,7 +39,7 @@ namespace YourEthereumManager
 		private Transform m_container;
 
 		private InputField m_publicAddressInput;
-		private string m_publicAddressToSend;
+		private string m_publicAddressToSend = "";
 		private bool m_validPublicAddressToSend = false;
 		private GameObject m_validAddress;
 		private GameObject m_saveAddress;
@@ -102,7 +102,8 @@ namespace YourEthereumManager
 				if (_list.Length > 0)
 				{
 					publicKeyAddress = (string)_list[0];					
-					if (_list.Length > 2)
+                    if (publicKeyAddress == null) publicKeyAddress = "";
+                    if (_list.Length > 2)
 					{
 						amountTransaction = (string)_list[1];
 						EthereumController.Instance.CurrentCurrency = (string)_list[2];
