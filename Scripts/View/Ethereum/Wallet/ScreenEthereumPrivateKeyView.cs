@@ -109,6 +109,8 @@ namespace YourEthereumManager
 		 */
 		public override void Initialize(params object[] _list)
 		{
+            base.Initialize(_list);
+
 #if ENABLE_FULL_WALLET
 			if ((_list != null) && (_list.Length > 0))
 			{
@@ -121,7 +123,7 @@ namespace YourEthereumManager
 				m_enableDelete = false;
 			}
 #else
-			if (_list != null)
+            if (_list != null)
 			{
 				if (_list.Length > 0)
 				{
@@ -488,7 +490,7 @@ namespace YourEthereumManager
 		 */
 		private void OnCheckInputTransactions()
 		{
-			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, true, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_INPUTS);
+			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_INPUTS);
 		}
 
 		// -------------------------------------------
@@ -497,7 +499,7 @@ namespace YourEthereumManager
 		 */
 		private void OnCheckOutputTransactions()
 		{
-			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, true, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_OUTPUTS);
+			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_OUTPUTS);
 		}		
 
 		// -------------------------------------------

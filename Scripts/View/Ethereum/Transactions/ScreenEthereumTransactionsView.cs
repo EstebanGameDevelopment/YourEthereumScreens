@@ -49,7 +49,9 @@ namespace YourEthereumManager
 		 */
 		public override void Initialize(params object[] _list)
 		{
-			m_transactionConsultType = (int)_list[0];
+            base.Initialize(_list);
+
+            m_transactionConsultType = (int)_list[0];
 
 			m_root = this.gameObject;
 			m_container = m_root.transform.Find("Content");

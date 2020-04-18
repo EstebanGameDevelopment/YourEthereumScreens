@@ -93,7 +93,9 @@ namespace YourEthereumManager
 		 */
 		public override void Initialize(params object[] _list)
 		{
-			string publicKeyAddress = "";
+            base.Initialize(_list);
+
+            string publicKeyAddress = "";
 			string amountTransaction = "0";
 			string messageTransaction = LanguageController.Instance.GetText("screen.send.explain.please");
 
@@ -295,9 +297,9 @@ namespace YourEthereumManager
 		{
 			UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_POPUP);
 #if ENABLE_FULL_WALLET
-			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, true);
+			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false);
 #else
-			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, true, EthereumController.Instance.CurrentPublicKey);
+            ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, EthereumController.Instance.CurrentPublicKey);
 #endif
 		}
 
