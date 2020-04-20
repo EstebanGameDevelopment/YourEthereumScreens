@@ -79,8 +79,8 @@ namespace YourEthereumManager
 			{
 				string titleInfoError = LanguageController.Instance.GetText("message.error");
 				string descriptionInfoError = LanguageController.Instance.GetText("screen.enter.email.empty.data");
-				ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, titleInfoError, descriptionInfoError, null, "");
-			}
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, titleInfoError, descriptionInfoError, null, "");
+            }
 			else
 			{
 				UIEventController.Instance.DispatchUIEvent(EVENT_SCREENENTEREMAIL_PRIVATE_KEY_CONFIRMATION, email);

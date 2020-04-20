@@ -1,5 +1,6 @@
 ﻿#if ENABLE_ETHEREUM
 using Nethereum.Signer;
+using System.Collections.Generic;
 #endif
 using UnityEngine;
 using UnityEngine.UI;
@@ -315,8 +316,8 @@ namespace YourEthereumManager
 		{
 			string info = LanguageController.Instance.GetText("message.info");
 			string description = LanguageController.Instance.GetText("screen.ethereum.wallet.name.as.you.want");
-			ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, info, description, null, "");
-		}
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, info, description, null, "");
+        }
 
 		// -------------------------------------------
 		/* 
@@ -326,8 +327,8 @@ namespace YourEthereumManager
 		{
 			string info = LanguageController.Instance.GetText("message.info");
 			string description = LanguageController.Instance.GetText("screen.ethereum.wallet.fill.the.inputfield.with.your.private.key");
-			ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, info, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_VIDEO_TUTORIAL);
-		}
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, info, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_VIDEO_TUTORIAL);
+        }
 
 		// -------------------------------------------
 		/* 
@@ -337,8 +338,8 @@ namespace YourEthereumManager
 		{
 			string info = LanguageController.Instance.GetText("message.warning");
 			string description = LanguageController.Instance.GetText("screen.ethereum.wallet.send.private.key.warning");
-			ScreenEthereumController.Instance.CreateNewScreen(ScreenEmailPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false);
-		}
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEmailPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false);
+        }
 
 		// -------------------------------------------
 		/* 
@@ -408,8 +409,8 @@ namespace YourEthereumManager
 						UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_WAIT);
 						string warning = LanguageController.Instance.GetText("message.error");
 						string description = LanguageController.Instance.GetText("message.location.key.is.not.valid.blockchain");
-						ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, "");
-					}
+                        UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, "");
+                    }
 					return false;
 				}
 			}
@@ -425,8 +426,8 @@ namespace YourEthereumManager
 			{
 				string warning = LanguageController.Instance.GetText("message.warning");
 				string description = LanguageController.Instance.GetText("message.exit.without.apply.changes");
-				ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUM_CONFIRMATION_EXIT_WITHOUT_SAVE);
-			}
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUM_CONFIRMATION_EXIT_WITHOUT_SAVE);
+            }
 			else
 			{
 				Destroy();
@@ -442,13 +443,13 @@ namespace YourEthereumManager
 			if (m_requestCheckValidKey)
 			{
 				m_requestCheckValidKey = false;
-				ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
-				Invoke("CheckKeyEnteredInMainField", 0.1f);
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
+                Invoke("CheckKeyEnteredInMainField", 0.1f);
 			}
 			else
 			{
-				ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumAddFundsKeyView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, EthereumController.Instance.CurrentPublicKey);
-			}
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumAddFundsKeyView.SCREEN_NAME, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true, EthereumController.Instance.CurrentPublicKey);
+            }
 		}
 
 		// -------------------------------------------
@@ -457,9 +458,9 @@ namespace YourEthereumManager
 		 */
 		private void OnCreateNewWallet()
 		{
-			ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
 
-			Invoke("OnRealCreateNewWallet", 0.1f);
+            Invoke("OnRealCreateNewWallet", 0.1f);
 		}
 
 		// -------------------------------------------
@@ -490,8 +491,8 @@ namespace YourEthereumManager
 		 */
 		private void OnCheckInputTransactions()
 		{
-			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_INPUTS);
-		}
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_INPUTS);
+        }
 
 		// -------------------------------------------
 		/* 
@@ -499,8 +500,8 @@ namespace YourEthereumManager
 		 */
 		private void OnCheckOutputTransactions()
 		{
-			ScreenEthereumController.Instance.CreateNewScreen(ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_OUTPUTS);
-		}		
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_OUTPUTS);
+        }		
 
 		// -------------------------------------------
 		/* 
@@ -510,8 +511,8 @@ namespace YourEthereumManager
 		{
 			string warning = LanguageController.Instance.GetText("message.warning");
 			string description = LanguageController.Instance.GetText("screen.ethereum.wallet.once.you.set.up.done");
-			ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_BURN_KEY_CONFIRMATION);
-		}
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_BURN_KEY_CONFIRMATION);
+        }
 
 		// -------------------------------------------
 		/* 
@@ -532,8 +533,8 @@ namespace YourEthereumManager
 		{
 			string warning = LanguageController.Instance.GetText("message.warning");
 			string description = LanguageController.Instance.GetText("screen.ethereum.do.you.really.want.to.delete.wallet");
-			ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_CONFIRMATION_DELETE);
-		}
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_CONFIRMATION_DELETE);
+        }
 
 		// -------------------------------------------
 		/* 
@@ -583,7 +584,7 @@ namespace YourEthereumManager
             UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_WAIT);
             if (_displayWaitScreen)
             {
-                ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
             }
             EthereumController.Instance.ValidatePrivateKey(_privateKey, EVENT_SCREENETHEREUMPRIVATEKEY_WALLET_BALANCE);
         }
@@ -621,8 +622,8 @@ namespace YourEthereumManager
 						{
 							string warning = LanguageController.Instance.GetText("message.error");
 							string description = LanguageController.Instance.GetText("screen.ethereum.wallet.not.the.same.public.key");
-							ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_HIDE_INFO_BUTTONS);
-						}
+                            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_HIDE_INFO_BUTTONS);
+                        }
 						else
 						{
 							m_buttonSave.SetActive((EthereumController.Instance.CurrentPrivateKey != _privateKey));
@@ -677,8 +678,8 @@ namespace YourEthereumManager
 		 */
 		private void OnExchangeTableInfo()
 		{
-			ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
-			if (m_balanceValue > 0)
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
+            if (m_balanceValue > 0)
 			{
 				UIEventController.Instance.DelayUIEvent(EVENT_SCREENPROFILE_LOAD_SCREEN_EXCHANGE_TABLES_INFO, 0.1f);
 			}
@@ -698,9 +699,12 @@ namespace YourEthereumManager
 			{
 #if ENABLE_FULL_WALLET
 				UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_POPUP);
-				MenusScreenController.MainInstance.CreateNewScreen(ScreenExchangeTableView.SCREEN_EXCHANGE_TABLE, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, m_balanceValue, (string)_list[0]);
+                List<object> paramsExchangeTable = new List<object>();
+                paramsExchangeTable.Add(m_balanceValue);
+                paramsExchangeTable.Add((string)_list[0]);
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenExchangeTableView.SCREEN_EXCHANGE_TABLE, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, paramsExchangeTable);
 #endif
-			}
+            }
 			if ((_nameEvent == EVENT_SCREENETHEREUMPRIVATEKEY_WALLET_BALANCE)
                 || (_nameEvent == EthereumController.EVENT_ETHEREUMCONTROLLER_BALANCE_WALLET))
 			{
@@ -759,7 +763,7 @@ namespace YourEthereumManager
                 }
                 else
                 {
-                    ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.error"), LanguageController.Instance.GetText("message.location.key.is.not.valid.blockchain"), null, "");
+                    UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.error"), LanguageController.Instance.GetText("message.location.key.is.not.valid.blockchain"), null, "");
                 }
             }
             if (_nameEvent == EVENT_SCREENETHEREUMPRIVATEKEY_REFRESH_DATA_LIST)
@@ -814,8 +818,8 @@ namespace YourEthereumManager
 				{
 					if ((bool)_list[1])
 					{
-						ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
-						Invoke("OnRealSaveButton", 0.1f);
+                        UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
+                        Invoke("OnRealSaveButton", 0.1f);
 					}
 				}
 				if (subEvent == SUB_EVENT_SCREENETHEREUMPRIVATEKEY_HIDE_INFO_BUTTONS)

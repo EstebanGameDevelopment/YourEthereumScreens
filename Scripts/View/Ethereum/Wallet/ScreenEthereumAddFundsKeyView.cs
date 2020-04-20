@@ -92,8 +92,8 @@ namespace YourEthereumManager
 			Utilities.Clipboard = m_publicKey;
 			string title = LanguageController.Instance.GetText("message.info");
 			string description = LanguageController.Instance.GetText("screen.ethereum.copied.public.key.clipboard");
-			ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, title, description, null, SUBEVENT_CONFIRMATION_OPEN_URL_TO_ADD_ETHEREUM);
-		}
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, title, description, null, SUBEVENT_CONFIRMATION_OPEN_URL_TO_ADD_ETHEREUM);
+        }
 
 		// -------------------------------------------
 		/* 
@@ -113,8 +113,8 @@ namespace YourEthereumManager
 				pages.Add(new PageInformation(title, LanguageController.Instance.GetText("screen.ethereum.choose.your.own.method.bitcoins.to.paypal.2"), null, ""));
 				pages.Add(new PageInformation(title, LanguageController.Instance.GetText("screen.ethereum.choose.your.own.method.bitcoins.to.paypal.3"), null, SUBEVENT_CONFIRMATION_OPEN_URL_ETHEREUM_TO_PAYPAL));
 			}
-			ScreenEthereumController.Instance.CreateNewInformationScreen(ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, pages);			
-		}
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenInformationView.SCREEN_INFORMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, pages);
+        }
 
 		// -------------------------------------------
 		/* 

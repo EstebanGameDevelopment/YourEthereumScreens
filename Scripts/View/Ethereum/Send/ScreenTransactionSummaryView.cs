@@ -41,10 +41,12 @@ namespace YourEthereumManager
 		{
             base.Initialize(_list);
 
-            decimal amount = (decimal)_list[0];
-			string currency = (string)_list[1];
-			string toAddressTarget = (string)_list[2];
-			string subjectTransaction = (string)_list[3];
+            List<object> paramsTransaction = (List<object>)_list[0];
+
+            decimal amount = (decimal)paramsTransaction[0];
+			string currency = (string)paramsTransaction[1];
+			string toAddressTarget = (string)paramsTransaction[2];
+			string subjectTransaction = (string)paramsTransaction[3];
 
 			m_root = this.gameObject;
 			m_container = m_root.transform.Find("Content");
