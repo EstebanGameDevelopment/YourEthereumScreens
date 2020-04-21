@@ -29,8 +29,10 @@ namespace YourEthereumManager
 
         public const string EVENT_SCREENETHEREUMPRIVATEKEY_WALLET_BALANCE                   = "EVENT_SCREENETHEREUMPRIVATEKEY_WALLET_BALANCE";
         public const string EVENT_SCREENETHEREUMPRIVATEKEY_VALIDATION_RESPONSE              = "EVENT_SCREENETHEREUMPRIVATEKEY_VALIDATION_RESPONSE";
-        public const string EVENT_SCREENETHEREUMPRIVATEKEY_REFRESH_DATA_LIST                = "EVENT_SCREENETHEREUMPRIVATEKEY_REFRESH_DATA_LIST";        
+        public const string EVENT_SCREENETHEREUMPRIVATEKEY_REFRESH_DATA_LIST                = "EVENT_SCREENETHEREUMPRIVATEKEY_REFRESH_DATA_LIST";
 
+        public const string EVENT_SCREENETHEREUMPRIVATEKEY_CANCELATION                      = "EVENT_SCREENETHEREUMPRIVATEKEY_CANCELATION";
+        
         // ----------------------------------------------
         // SUBS
         // ----------------------------------------------	
@@ -112,10 +114,12 @@ namespace YourEthereumManager
 		{
             base.Initialize(_list);
 
+            object[] initialParams = (object[])_list[0];
+
 #if ENABLE_FULL_WALLET
-			if ((_list != null) && (_list.Length > 0))
+			if ((initialParams != null) && (initialParams.Length > 0))
 			{
-				m_enableEdition = (bool)_list[0];
+				m_enableEdition = (bool)initialParams[0];
 				m_enableDelete = true;
 			}
 			else
@@ -124,11 +128,11 @@ namespace YourEthereumManager
 				m_enableDelete = false;
 			}
 #else
-            if (_list != null)
+            if (initialParams != null)
 			{
-				if (_list.Length > 0)
+				if (initialParams.Length > 0)
 				{
-					m_currentPublicKey = (string)_list[0];
+					m_currentPublicKey = (string)initialParams[0];
 					m_considerEnableEdition = true;
 				}
 			}
@@ -430,7 +434,8 @@ namespace YourEthereumManager
             }
 			else
 			{
-				Destroy();
+                BasicSystemEventController.Instance.DispatchBasicSystemEvent(EVENT_SCREENETHEREUMPRIVATEKEY_CANCELATION);
+                Destroy();
 			}
 		}
 
@@ -448,7 +453,7 @@ namespace YourEthereumManager
 			}
 			else
 			{
-                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumAddFundsKeyView.SCREEN_NAME, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true, EthereumController.Instance.CurrentPublicKey);
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumAddFundsKeyView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, EthereumController.Instance.CurrentPublicKey);
             }
 		}
 
