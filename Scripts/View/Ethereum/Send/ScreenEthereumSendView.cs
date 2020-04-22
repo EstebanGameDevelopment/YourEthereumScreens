@@ -99,19 +99,21 @@ namespace YourEthereumManager
 			string amountTransaction = "0";
 			string messageTransaction = LanguageController.Instance.GetText("screen.send.explain.please");
 
-			if (_list != null)
+            List<object> paramsSend = (List<object>)_list[0];
+
+			if (paramsSend != null)
 			{
-				if (_list.Length > 0)
+				if (paramsSend.Count > 0)
 				{
-					publicKeyAddress = (string)_list[0];					
+					publicKeyAddress = (string)paramsSend[0];					
                     if (publicKeyAddress == null) publicKeyAddress = "";
-                    if (_list.Length > 2)
+                    if (paramsSend.Count > 2)
 					{
-						amountTransaction = (string)_list[1];
-						EthereumController.Instance.CurrentCurrency = (string)_list[2];
-						if (_list.Length > 3)
+						amountTransaction = (string)paramsSend[1];
+						EthereumController.Instance.CurrentCurrency = (string)paramsSend[2];
+						if (paramsSend.Count > 3)
 						{
-							messageTransaction = (string)_list[3];
+							messageTransaction = (string)paramsSend[3];
 						}
 					}					
 				}
@@ -299,7 +301,9 @@ namespace YourEthereumManager
 #if ENABLE_FULL_WALLET
             UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false);
 #else
-            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, EthereumController.Instance.CurrentPublicKey);
+            List<object> paramsWallet = new List<object>();
+            paramsWallet.Add(EthereumController.Instance.CurrentPublicKey);
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, paramsWallet.ToArray());
 #endif
         }
 
@@ -515,7 +519,7 @@ namespace YourEthereumManager
 #endif
 			if (_nameEvent == EVENT_SCREENETHEREUMSEND_USER_CONFIRMED_RUN_TRANSACTION)
 			{
-				ScreenEthereumController.Instance.DestroyScreensFromLayerPool();
+                UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_POPUP);
                 UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_WAIT, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, LanguageController.Instance.GetText("message.info"), LanguageController.Instance.GetText("message.please.wait"), null, "");
                 Invoke("OnExecuteRealPayment", 0.1f);
 			}

@@ -118,11 +118,30 @@ namespace YourEthereumManager
 			return true;
 		}
 
-		// -------------------------------------------
-		/* 
+        // -------------------------------------------
+        /* 
+		 * GetOnClick
+		 */
+        public ButtonClickedEvent GetOnClick()
+        {
+            return onClick;
+        }
+
+        // -------------------------------------------
+        /* 
+		 * RunOnClick
+		 */
+        public bool RunOnClick()
+        {
+            ActionOnClick();
+            return true;
+        }
+
+        // -------------------------------------------
+        /* 
 		 * UpdateCurrency
 		 */
-		public void UpdateCurrency()
+        public void UpdateCurrency()
 		{
 #if ENABLE_ETHEREUM
 			string balanceCurrencyWallet = (EthereumController.FromWei(new BigInteger(m_amount)) * EthereumController.Instance.CurrenciesExchange[EthereumController.Instance.CurrentCurrency]).ToString();
@@ -150,20 +169,30 @@ namespace YourEthereumManager
 		public override void OnPointerClick(PointerEventData eventData)
 		{
 			base.OnPointerClick(eventData);
-			UIEventController.Instance.DispatchUIEvent(EVENT_SLOT_TRANSACTION_SELECTED, m_id);
-		}
 
-		// -------------------------------------------
-		/* 
+            ActionOnClick();
+        }
+
+        // -------------------------------------------
+        /* 
+		 * ActionOnClick
+		 */
+        private void ActionOnClick()
+        {
+            UIEventController.Instance.DispatchUIEvent(EVENT_SLOT_TRANSACTION_SELECTED, m_id);
+        }
+
+
+        // -------------------------------------------
+        /* 
 		 * OnBitcoinEvent
 		 */
-		private void OnEthereumEvent(string _nameEvent, params object[] _list)
+        private void OnEthereumEvent(string _nameEvent, params object[] _list)
 		{
 			if (_nameEvent == EthereumController.EVENT_ETHEREUMCONTROLLER_CURRENCY_CHANGED)
 			{
 				UpdateCurrency();
 			}
 		}
-
-	}
+   }
 }
