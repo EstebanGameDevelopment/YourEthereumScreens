@@ -342,7 +342,7 @@ namespace YourEthereumManager
 		{
 			string info = LanguageController.Instance.GetText("message.warning");
 			string description = LanguageController.Instance.GetText("screen.ethereum.wallet.send.private.key.warning");
-            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEmailPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false);
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_LAYER_GENERIC_SCREEN, 1, null, ScreenEmailPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false);
         }
 
 		// -------------------------------------------
@@ -453,7 +453,7 @@ namespace YourEthereumManager
 			}
 			else
 			{
-                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumAddFundsKeyView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, EthereumController.Instance.CurrentPublicKey);
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_LAYER_GENERIC_SCREEN, 1, null, ScreenEthereumAddFundsKeyView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, EthereumController.Instance.CurrentPublicKey);
             }
 		}
 
@@ -496,7 +496,7 @@ namespace YourEthereumManager
 		 */
 		private void OnCheckInputTransactions()
 		{
-            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_INPUTS);
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_LAYER_GENERIC_SCREEN, 1, null, ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_INPUTS);
         }
 
 		// -------------------------------------------
@@ -505,7 +505,7 @@ namespace YourEthereumManager
 		 */
 		private void OnCheckOutputTransactions()
 		{
-            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_OUTPUTS);
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_LAYER_GENERIC_SCREEN, 1, null, ScreenEthereumTransactionsView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, ScreenEthereumTransactionsView.TRANSACTION_CONSULT_OUTPUTS);
         }		
 
 		// -------------------------------------------
