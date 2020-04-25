@@ -143,10 +143,13 @@ namespace YourEthereumManager
 					Application.OpenURL("https://www.coinbase.com");
 				}				
 			}
-			if (_nameEvent == UIEventController.EVENT_SCREENMANAGER_ANDROID_BACK_BUTTON)
-			{
-				OnBackButton();
-			}
-		}
-	}
+            if (this.gameObject.activeSelf)
+            {
+                if (_nameEvent == UIEventController.EVENT_SCREENMANAGER_ANDROID_BACK_BUTTON)
+                {
+                    OnBackButton();
+                }
+            }
+        }
+    }
 }
