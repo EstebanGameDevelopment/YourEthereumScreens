@@ -20,6 +20,7 @@ namespace YourEthereumManager
 		// EVENTS
 		// ----------------------------------------------	
 		public const string EVENT_SCREENETHEREUMSEND_USER_CONFIRMED_RUN_TRANSACTION = "EVENT_SCREENETHEREUMSEND_USER_CONFIRMED_RUN_TRANSACTION";
+		public const string EVENT_SCREENETHEREUMSEND_CANCELATION                    = "EVENT_SCREENETHEREUMSEND_CANCELATION";
 
 		// ----------------------------------------------
 		// SUBS
@@ -344,6 +345,7 @@ namespace YourEthereumManager
             }
 			else
 			{
+                BasicSystemEventController.Instance.DispatchBasicSystemEvent(EVENT_SCREENETHEREUMSEND_CANCELATION);
 				Destroy();
 			}
 		}
@@ -414,7 +416,7 @@ namespace YourEthereumManager
             paramsTransaction.Add(m_currencySelected);
             paramsTransaction.Add(EthereumController.Instance.AddressToLabel(m_publicAddressToSend));
             paramsTransaction.Add(m_messageInput.text);
-            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenTransactionSummaryView.SCREEN_NAME, UIScreenTypePreviousAction.HIDE_CURRENT_SCREEN, false, paramsTransaction);
+            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_LAYER_GENERIC_SCREEN, 1, null, ScreenTransactionSummaryView.SCREEN_NAME, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, paramsTransaction);
         }
 
 		// -------------------------------------------
@@ -548,10 +550,13 @@ namespace YourEthereumManager
 					EthereumEventController.Instance.DispatchEthereumEvent(EthereumController.EVENT_ETHEREUMCONTROLLER_TRANSACTION_USER_ACKNOWLEDGE, m_transactionSuccess, m_transactionIDHex);					
 				}
 			}
-			if (_nameEvent == UIEventController.EVENT_SCREENMANAGER_ANDROID_BACK_BUTTON)
-			{
-				OnBackButton();
-			}
-		}
-	}
+            if (this.gameObject.activeSelf)
+            {
+                if (_nameEvent == UIEventController.EVENT_SCREENMANAGER_ANDROID_BACK_BUTTON)
+                {
+                    OnBackButton();
+                }
+            }
+        }
+    }
 }
