@@ -512,6 +512,8 @@ namespace YourEthereumManager
 		 */
 		protected void OnUIEvent(string _nameEvent, params object[] _list)
 		{
+            OnMenuEvent(_nameEvent, _list);
+
 #if ENABLE_FULL_WALLET
 			if (_nameEvent == ScreenEnterEmailView.EVENT_SCREENENTEREMAIL_CONFIRMATION)
 			{
