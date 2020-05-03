@@ -115,13 +115,13 @@ namespace YourEthereumManager
 			m_optionalParams = _optionalParams;
 			if (m_hasBeenInitialized)
 			{
-				CreateNewScreen(m_screenToLoad, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true, m_optionalParams);
-			}
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, m_screenToLoad, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true, m_optionalParams);
+            }
 			else
 			{
-				CreateNewInformationScreen(ScreenInformationView.SCREEN_INITIAL_CONNECTION, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, LanguageController.Instance.GetText("message.your.bitcoin.manager.title"), LanguageController.Instance.GetText("message.connecting.to.blockchain"), null, null);
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INITIAL_CONNECTION, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, LanguageController.Instance.GetText("message.your.bitcoin.manager.title"), LanguageController.Instance.GetText("message.connecting.to.blockchain"), null, null);
 
-				Invoke("InitializeRealEthereum", 0.1f);
+                Invoke("InitializeRealEthereum", 0.1f);
 			}
 		}
 
@@ -171,14 +171,14 @@ namespace YourEthereumManager
 
 					if (EthereumController.Instance.CurrentPrivateKey.Length == 0)
 					{
-						CreateNewScreen(ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true);
-					}
+                        UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenEthereumPrivateKeyView.SCREEN_NAME, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true);
+                    }
 					else
 					{
 						if (m_screenToLoad.Length > 0)
 						{
-							CreateNewScreen(m_screenToLoad, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true, m_optionalParams);
-						}
+                            UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, m_screenToLoad, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true, m_optionalParams);
+                        }
 					}
 				}
 				EthereumEventController.Instance.DispatchEthereumEvent(EthereumController.EVENT_ETHEREUMCONTROLLER_ALL_DATA_INITIALIZED);

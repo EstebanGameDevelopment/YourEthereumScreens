@@ -707,7 +707,7 @@ namespace YourEthereumManager
                 List<object> paramsExchangeTable = new List<object>();
                 paramsExchangeTable.Add(m_balanceValue);
                 paramsExchangeTable.Add((string)_list[0]);
-                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenExchangeTableView.SCREEN_EXCHANGE_TABLE, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, paramsExchangeTable);
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, ScreenExchangeTableView.SCREEN_EXCHANGE_TABLE, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, false, paramsExchangeTable.ToArray());
 #endif
             }
 			if ((_nameEvent == EVENT_SCREENETHEREUMPRIVATEKEY_WALLET_BALANCE)

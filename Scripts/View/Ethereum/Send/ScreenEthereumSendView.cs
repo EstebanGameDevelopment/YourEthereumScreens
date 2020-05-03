@@ -100,25 +100,32 @@ namespace YourEthereumManager
 			string amountTransaction = "0";
 			string messageTransaction = LanguageController.Instance.GetText("screen.send.explain.please");
 
-            List<object> paramsSend = (List<object>)_list[0];
+            object[] objectParams = (object[])_list[0];
 
-			if (paramsSend != null)
-			{
-				if (paramsSend.Count > 0)
-				{
-					publicKeyAddress = (string)paramsSend[0];					
-                    if (publicKeyAddress == null) publicKeyAddress = "";
-                    if (paramsSend.Count > 2)
-					{
-						amountTransaction = (string)paramsSend[1];
-						EthereumController.Instance.CurrentCurrency = (string)paramsSend[2];
-						if (paramsSend.Count > 3)
-						{
-							messageTransaction = (string)paramsSend[3];
-						}
-					}					
-				}
-			}
+            if (objectParams != null)
+            {
+                if (objectParams.Length > 0)
+                {
+                    List<object> paramsSend = (List<object>)objectParams[0];
+                    if (paramsSend != null)
+                    {
+                        if (paramsSend.Count > 0)
+                        {
+                            publicKeyAddress = (string)paramsSend[0];
+                            if (publicKeyAddress == null) publicKeyAddress = "";
+                            if (paramsSend.Count > 2)
+                            {
+                                amountTransaction = (string)paramsSend[1];
+                                EthereumController.Instance.CurrentCurrency = (string)paramsSend[2];
+                                if (paramsSend.Count > 3)
+                                {
+                                    messageTransaction = (string)paramsSend[3];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
 			m_root = this.gameObject;
 			m_container = m_root.transform.Find("Content");
