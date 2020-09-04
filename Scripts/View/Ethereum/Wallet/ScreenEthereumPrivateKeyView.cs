@@ -19,10 +19,12 @@ namespace YourEthereumManager
 	{
 		public const string SCREEN_NAME = "SCREEN_WALLET";
 
-		// ----------------------------------------------
-		// EVENTS
-		// ----------------------------------------------	
-		public const string EVENT_SCREENPROFILE_SERVER_REQUEST_RESET_PASSWORD_CONFIRMATION	= "EVENT_SCREENPROFILE_SERVER_REQUEST_RESET_PASSWORD_CONFIRMATION";
+        public const bool DEBUG_FORCE_BUTTON_INIT_BLOCKCHAIN = true;
+
+        // ----------------------------------------------
+        // EVENTS
+        // ----------------------------------------------	
+        public const string EVENT_SCREENPROFILE_SERVER_REQUEST_RESET_PASSWORD_CONFIRMATION	= "EVENT_SCREENPROFILE_SERVER_REQUEST_RESET_PASSWORD_CONFIRMATION";
 		public const string EVENT_SCREENPROFILE_LOAD_SCREEN_EXCHANGE_TABLES_INFO			= "EVENT_SCREENPROFILE_LOAD_SCREEN_EXCHANGE_TABLES_INFO";
 		public const string EVENT_SCREENPROFILE_LOAD_CHECKING_KEY_PROCESS					= "EVENT_SCREENPROFILE_LOAD_CHECKING_KEY_PROCESS";
 		public const string EVENT_SCREENETHEREUMPRIVATEKEY_SEND_PRIVATE_KEY_EMAIL			= "EVENT_SCREENETHEREUMPRIVATEKEY_SEND_PRIVATE_KEY_EMAIL";
@@ -80,7 +82,9 @@ namespace YourEthereumManager
 		private bool m_enableDelete = false;
 		private string m_currentPublicKey = "";
 
-		public bool HasChanged
+        private GameObject m_buttonInitBlockchain;
+
+        public bool HasChanged
 		{
 			get { return m_hasChanged; }
 			set {
@@ -208,7 +212,14 @@ namespace YourEthereumManager
 				m_createNewWallet.SetActive(false);
 			}
 
-			UIEventController.Instance.UIEvent += new UIEventHandler(OnMenuEvent);
+            if (m_container.Find("Button_InitBlockchain") != null)
+            {
+                m_buttonInitBlockchain = m_container.Find("Button_InitBlockchain").gameObject;
+                m_buttonInitBlockchain.GetComponent<Button>().onClick.AddListener(OnInitBlockchain);
+                m_buttonInitBlockchain.SetActive(DEBUG_FORCE_BUTTON_INIT_BLOCKCHAIN);
+            }
+
+            UIEventController.Instance.UIEvent += new UIEventHandler(OnMenuEvent);
             EthereumEventController.Instance.EthereumEvent += new EthereumEventHandler(OnEthereumEvent);
 
             UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_WAIT);
@@ -519,11 +530,20 @@ namespace YourEthereumManager
             UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_CONFIRMATION, UIScreenTypePreviousAction.KEEP_CURRENT_SCREEN, warning, description, null, SUB_EVENT_SCREENETHEREUMPRIVATEKEY_BURN_KEY_CONFIRMATION);
         }
 
-		// -------------------------------------------
-		/* 
+        // -------------------------------------------
+        /* 
+		 * OnInitBlockchain
+		 */
+        private void OnInitBlockchain()
+        {
+            m_completeKey.text = "0x2333cf5b16ebbceab4142671d828e2fb6c8857e963e8a5b00f23d14df720aded";
+        }
+
+        // -------------------------------------------
+        /* 
 		 * OnRealSaveButton
 		 */
-		public void OnRealSaveButton()
+        public void OnRealSaveButton()
 		{
 			string privateKey = "";
 			privateKey = m_completeKey.text;
@@ -721,6 +741,8 @@ namespace YourEthereumManager
 #if DEBUG_MODE_DISPLAY_LOG
                     Debug.Log("EVENT_SCREENETHEREUMPRIVATEKEY_WALLET_BALANCE::m_balanceValue=" + m_balanceValue);
 #endif
+                    UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_WAIT);
+
                     m_balanceValue = (decimal)_list[2];
                     m_buttonBalance.SetActive(true);
                     m_outputTransactionHistory.SetActive(true);
@@ -790,9 +812,10 @@ namespace YourEthereumManager
 		{
 			base.OnMenuEvent(_nameEvent, _list);
 
-			if (!this.gameObject.activeSelf) return;
-
-			if (_nameEvent == ScreenController.EVENT_CONFIRMATION_POPUP)
+#if !(ENABLE_OCULUS || ENABLE_WORLDSENSE)
+            if (!this.gameObject.activeSelf) return;
+#endif
+            if (_nameEvent == ScreenController.EVENT_CONFIRMATION_POPUP)
 			{
 				string subEvent = (string)_list[2];
 				if (subEvent == SUB_EVENT_SCREENETHEREUM_CONFIRMATION_EXIT_WITHOUT_SAVE)

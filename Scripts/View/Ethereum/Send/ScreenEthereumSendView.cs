@@ -550,9 +550,11 @@ namespace YourEthereumManager
                 Invoke("OnExecuteRealPayment", 0.1f);
 			}
 
-			if (!this.gameObject.activeSelf) return;
+#if !(ENABLE_OCULUS || ENABLE_WORLDSENSE)
+            if (!this.gameObject.activeSelf) return;
+#endif
 
-			if (_nameEvent == ScreenController.EVENT_CONFIRMATION_POPUP)
+            if (_nameEvent == ScreenController.EVENT_CONFIRMATION_POPUP)
 			{
 				string subEvent = (string)_list[2];
 				if (subEvent == SUB_EVENT_SCREENETHEREUM_CONFIRMATION_EXIT_TRANSACTION)

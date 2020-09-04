@@ -26,14 +26,14 @@ public class StartEthereumExample : MonoBehaviour {
 		float yGlobalPosition = 10;
 		if (GUI.Button(new Rect(new Vector2(10, yGlobalPosition), new Vector2(Screen.width - 20, 2 * fontSize)), "OPEN WALLET"))
 		{
-			ScreenEthereumController.Instance.InitializeEthereum(ScreenEthereumPrivateKeyView.SCREEN_NAME);
+			ScreenEthereumController.Instance.InitializeEthereum(YourCommonTools.UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, ScreenEthereumPrivateKeyView.SCREEN_NAME);
 			m_hasBeenInitializedBitcoin = true;
 		}
 		yGlobalPosition += 2.2f * fontSize;
 
 		if (GUI.Button(new Rect(new Vector2(10, yGlobalPosition), new Vector2(Screen.width - 20, 2 * fontSize)), "SEND MONEY"))
 		{
-			ScreenEthereumController.Instance.InitializeEthereum(ScreenEthereumSendView.SCREEN_NAME);
+			ScreenEthereumController.Instance.InitializeEthereum(YourCommonTools.UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, ScreenEthereumSendView.SCREEN_NAME);
 			m_hasBeenInitializedBitcoin = true;
 		}
 	}

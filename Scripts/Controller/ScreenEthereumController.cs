@@ -1,6 +1,7 @@
 using UnityEngine;
 using YourCommonTools;
 using YourEthereumController;
+using YourNetworkingTools;
 
 namespace YourEthereumManager
 {
@@ -21,8 +22,8 @@ namespace YourEthereumManager
 	 *
 	 * @author Esteban Gallardo
 	 */
-	public class ScreenEthereumController : ScreenController
-	{
+	public class ScreenEthereumController : FunctionsScreenController
+    {
 		// ----------------------------------------------
 		// EVENTS
 		// ----------------------------------------------	
@@ -69,11 +70,13 @@ namespace YourEthereumManager
 		/* 
 		* Awake
 		*/
-		void Awake()
+		public override void Awake()
 		{
 			System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Threading.Thread.CurrentThread.CurrentCulture.Clone();
 			customCulture.NumberFormat.NumberDecimalSeparator = ".";
 			System.Threading.Thread.CurrentThread.CurrentCulture = customCulture;
+
+            base.Awake();
 		}
 
 		// -------------------------------------------
@@ -93,43 +96,52 @@ namespace YourEthereumManager
         Screen.SetResolution(550, 900, false);
 #endif
 
-#if ENABLE_ETHEREUM            
-            UIEventController.Instance.UIEvent += new UIEventHandler(OnUIEvent);
+#if ENABLE_ETHEREUM
             EthereumEventController.Instance.EthereumEvent += new EthereumEventHandler(OnEthereumEvent);
             LanguageController.Instance.Initialize();
 
             if (ScreenToLoad.Length > 0)
 			{
-				InitializeEthereum(ScreenToLoad);
+				InitializeEthereum(UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, ScreenToLoad);
 			}		
-#endif            
-		}
+#else
+            EnableProcessEvents = false;
+#endif
+        }
 
-		// -------------------------------------------
-		/* 
+        // -------------------------------------------
+        /* 
 		 * InitializeBitcoin
 		 */
-		public virtual void InitializeEthereum(string _screenToLoad = "", params object[] _optionalParams)
+        public virtual void InitializeEthereum(UIScreenTypePreviousAction _typeAction, string _screenToLoad = "", params object[] _optionalParams)
 		{
 			m_screenToLoad = _screenToLoad;
 			m_optionalParams = _optionalParams;
 			if (m_hasBeenInitialized)
 			{
-                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, m_screenToLoad, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, true, m_optionalParams);
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_GENERIC_SCREEN, m_screenToLoad, _typeAction, true, m_optionalParams);
             }
 			else
 			{
-                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INITIAL_CONNECTION, UIScreenTypePreviousAction.DESTROY_ALL_SCREENS, LanguageController.Instance.GetText("message.your.bitcoin.manager.title"), LanguageController.Instance.GetText("message.connecting.to.blockchain"), null, null);
+                UIEventController.Instance.DispatchUIEvent(UIEventController.EVENT_SCREENMANAGER_OPEN_INFORMATION_SCREEN, ScreenInformationView.SCREEN_INITIAL_CONNECTION, _typeAction, LanguageController.Instance.GetText("message.your.bitcoin.manager.title"), LanguageController.Instance.GetText("message.connecting.to.blockchain"), null, null);
 
                 Invoke("InitializeRealEthereum", 0.1f);
 			}
 		}
 
-		// -------------------------------------------
-		/* 
+        // -------------------------------------------
+        /* 
+		 * StartSplashScreen
+		 */
+        public override void StartSplashScreen()
+        {
+        }
+
+        // -------------------------------------------
+        /* 
 		 * InitializeRealBitcoin
 		 */
-		public void InitializeRealEthereum()
+        public void InitializeRealEthereum()
 		{
 			EthereumController.Instance.Init();
 		}
@@ -143,7 +155,6 @@ namespace YourEthereumManager
 			base.Destroy();
 
 #if ENABLE_ETHEREUM
-			UIEventController.Instance.UIEvent -= OnUIEvent;
 			EthereumEventController.Instance.EthereumEvent -= OnEthereumEvent;
 
 			LanguageController.Instance.Destroy();
