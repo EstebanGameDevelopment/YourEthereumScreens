@@ -19,8 +19,6 @@ namespace YourEthereumManager
 	{
 		public const string SCREEN_NAME = "SCREEN_WALLET";
 
-        public const bool DEBUG_FORCE_BUTTON_INIT_BLOCKCHAIN = true;
-
         // ----------------------------------------------
         // EVENTS
         // ----------------------------------------------	
@@ -28,6 +26,7 @@ namespace YourEthereumManager
 		public const string EVENT_SCREENPROFILE_LOAD_SCREEN_EXCHANGE_TABLES_INFO			= "EVENT_SCREENPROFILE_LOAD_SCREEN_EXCHANGE_TABLES_INFO";
 		public const string EVENT_SCREENPROFILE_LOAD_CHECKING_KEY_PROCESS					= "EVENT_SCREENPROFILE_LOAD_CHECKING_KEY_PROCESS";
 		public const string EVENT_SCREENETHEREUMPRIVATEKEY_SEND_PRIVATE_KEY_EMAIL			= "EVENT_SCREENETHEREUMPRIVATEKEY_SEND_PRIVATE_KEY_EMAIL";
+		public const string EVENT_SCREENETHEREUMPRIVATEKEY_INITIALIZE_BITCOIN_WITH          = "EVENT_SCREENETHEREUMPRIVATEKEY_INITIALIZE_BITCOIN_WITH";
 
         public const string EVENT_SCREENETHEREUMPRIVATEKEY_WALLET_BALANCE                   = "EVENT_SCREENETHEREUMPRIVATEKEY_WALLET_BALANCE";
         public const string EVENT_SCREENETHEREUMPRIVATEKEY_VALIDATION_RESPONSE              = "EVENT_SCREENETHEREUMPRIVATEKEY_VALIDATION_RESPONSE";
@@ -81,8 +80,6 @@ namespace YourEthereumManager
 		private bool m_enableEdition = true;
 		private bool m_enableDelete = false;
 		private string m_currentPublicKey = "";
-
-        private GameObject m_buttonInitBlockchain;
 
         public bool HasChanged
 		{
@@ -211,13 +208,6 @@ namespace YourEthereumManager
 			{
 				m_createNewWallet.SetActive(false);
 			}
-
-            if (m_container.Find("Button_InitBlockchain") != null)
-            {
-                m_buttonInitBlockchain = m_container.Find("Button_InitBlockchain").gameObject;
-                m_buttonInitBlockchain.GetComponent<Button>().onClick.AddListener(OnInitBlockchain);
-                m_buttonInitBlockchain.SetActive(DEBUG_FORCE_BUTTON_INIT_BLOCKCHAIN);
-            }
 
             UIEventController.Instance.UIEvent += new UIEventHandler(OnMenuEvent);
             EthereumEventController.Instance.EthereumEvent += new EthereumEventHandler(OnEthereumEvent);
@@ -532,15 +522,6 @@ namespace YourEthereumManager
 
         // -------------------------------------------
         /* 
-		 * OnInitBlockchain
-		 */
-        private void OnInitBlockchain()
-        {
-            m_completeKey.text = "0x2333cf5b16ebbceab4142671d828e2fb6c8857e963e8a5b00f23d14df720aded";
-        }
-
-        // -------------------------------------------
-        /* 
 		 * OnRealSaveButton
 		 */
         public void OnRealSaveButton()
@@ -720,7 +701,12 @@ namespace YourEthereumManager
 		 */
 		private void OnEthereumEvent(string _nameEvent, params object[] _list)
 		{
-			if (_nameEvent == EthereumController.EVENT_ETHEREUMCONTROLLER_JSON_EXCHANGE_TABLE)
+            if (_nameEvent == EVENT_SCREENETHEREUMPRIVATEKEY_INITIALIZE_BITCOIN_WITH)
+            {
+                m_completeKey.text = (string)_list[0];
+                Invoke("CheckKeyEnteredInMainField", 0.1f);
+            }
+            if (_nameEvent == EthereumController.EVENT_ETHEREUMCONTROLLER_JSON_EXCHANGE_TABLE)
 			{
 #if ENABLE_FULL_WALLET
 				UIEventController.Instance.DispatchUIEvent(ScreenController.EVENT_FORCE_DESTRUCTION_POPUP);
